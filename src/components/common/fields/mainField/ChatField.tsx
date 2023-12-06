@@ -7,17 +7,17 @@ import ChatCard, { TChatCard } from "../../cards/mainPageCards/ChatCard";
 import ChatTextField from "../../textFields/ChatTextField";
 import Image from "next/image";
 
-const ws = new WebSocket(`ws://v2224385.hosted-by-vdsina.ru/ws/chat/?token=${storage.get('AccessToken')}`)
+// const ws = new WebSocket(`ws://v2224385.hosted-by-vdsina.ru/ws/chat/?token=${storage.get('AccessToken')}`)
 
 export default function ChatField() {
     const [messages, setMessages] = useState<object[]>([])
     const [userMessage, setUserMessage] = useState<string>('')
     const messagesContainerRef = useRef<HTMLDivElement>(null);
 
-    const sendMessage = () => {
-        ws.send(JSON.stringify({ 'message': userMessage }))
-        setUserMessage('')
-    }
+    // const sendMessage = () => {
+    //     ws.send(JSON.stringify({ 'message': userMessage }))
+    //     setUserMessage('')
+    // }
 
     const normDate = (d: string) => {
         let date = new Date(d);
@@ -31,19 +31,19 @@ export default function ChatField() {
     }
 
     useEffect(() => {
-        ws.addEventListener('message', (e) => {
-            let newMessages = JSON.parse(e.data)
-            setMessages((prev) => {//@ts-ignore
-                if (newMessages[0]?.text !== prev[0]?.text) {
-                    //@ts-ignore
-                    return [...newMessages, ...prev]
-                } else return [...prev]
-            })
-        })
+        // ws.addEventListener('message', (e) => {
+        //     let newMessages = JSON.parse(e.data)
+        //     setMessages((prev) => {//@ts-ignore
+        //         if (newMessages[0]?.text !== prev[0]?.text) {
+        //             //@ts-ignore
+        //             return [...newMessages, ...prev]
+        //         } else return [...prev]
+        //     })
+        // })
 
-        if (messagesContainerRef.current) {
-            messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
-        }
+        // if (messagesContainerRef.current) {
+        //     messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+        // }
     }, [messages])
     return (
         <div className="min-w-[282px] w-[390px] rounded-6 lg:w-full h-[300px] bg-white overflow-hidden">
