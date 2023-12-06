@@ -14,10 +14,10 @@ export default function ChatField() {
     const [userMessage, setUserMessage] = useState<string>('')
     const messagesContainerRef = useRef<HTMLDivElement>(null);
 
-    // const sendMessage = () => {
-    //     ws.send(JSON.stringify({ 'message': userMessage }))
-    //     setUserMessage('')
-    // }
+    const sendMessage = () => {
+        // ws.send(JSON.stringify({ 'message': userMessage }))
+        // setUserMessage('')
+    }
 
     const normDate = (d: string) => {
         let date = new Date(d);
